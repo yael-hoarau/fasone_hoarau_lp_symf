@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Entity\Container;
+use App\Service\ContainerService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,10 +20,9 @@ class ContainerController extends AbstractController
     /**
      * @Route("/container", name="contain")
      */
-    function display(){
-        $containers = $this->getDoctrine()
-            ->getRepository(Container::class)
-            ->findAll();
+    function display(ContainerService $containerService){
+
+        $containers = $containerService->findAll();
 
         return $this->render('container/container.html.twig',[
             'containers' => $containers
@@ -32,11 +32,9 @@ class ContainerController extends AbstractController
     /**
      * @Route("/container/{id}", name="containId")
      */
-    function displayId($id)
+    function displayId($id, ContainerService $containerService)
     {
-        $container = $this->getDoctrine()
-            ->getRepository(Container::class)
-            ->find($id);
+        $container = $containerService->find($id);
 
         return $this->render('container/containerid.html.twig', [
             'container' => $container
