@@ -42,4 +42,9 @@ class ContainershipService
     function getManager(){
         return $this->entityManager;
     }
+
+    function insert(Containership $task){
+        $this->entityManager->persist($task);
+        $this->entityManager->flush();
+    }
 }

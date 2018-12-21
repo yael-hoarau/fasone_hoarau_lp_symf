@@ -42,4 +42,9 @@ class ContainerProductService
     function getManager(){
         return $this->entityManager;
     }
+
+    function insert(ContainerProduct $task){
+        $this->entityManager->persist($task);
+        $this->entityManager->flush();
+    }
 }

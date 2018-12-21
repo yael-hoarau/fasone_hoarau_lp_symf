@@ -43,4 +43,9 @@ class ContainerModelService
     function getManager(){
         return $this->entityManager;
     }
+
+    function insert(ContainerModel $task){
+        $this->entityManager->persist($task);
+        $this->entityManager->flush();
+    }
 }
