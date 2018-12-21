@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cd319ed-6c20-4adb-8266-285b3adad3d0" name="Default Changelist" comment="" />
+    <list default="true" id="4cd319ed-6c20-4adb-8266-285b3adad3d0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Controller/ContainerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ContainerController.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +27,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Container.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-63" />
+            <state relative-caret-position="375">
+              <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ContainerController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="47" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ContainerController.php">
+        <entry file="file://$PROJECT_DIR$/templates/container/container.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-              <folding>
-                <element signature="e#118#143#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="137" selection-start-line="2" selection-start-column="137" selection-end-line="2" selection-end-column="137" />
             </state>
           </provider>
         </entry>
@@ -90,7 +100,9 @@
         <option value="$PROJECT_DIR$/src/Controller/ContainerProductController.php" />
         <option value="$PROJECT_DIR$/src/Controller/Containership.php" />
         <option value="$PROJECT_DIR$/src/Controller/ProductController.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Container.php" />
         <option value="$PROJECT_DIR$/src/Controller/ContainerController.php" />
+        <option value="$PROJECT_DIR$/templates/container/container.html.twig" />
       </list>
     </option>
   </component>
@@ -241,6 +253,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Repository" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="fasone_hoarau_lp_symf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fasone_hoarau_lp_symf" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fasone_hoarau_lp_symf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fasone_hoarau_lp_symf" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="container" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -275,23 +298,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545395812171</updated>
-      <workItem from="1545395817244" duration="1947000" />
+      <workItem from="1545395817244" duration="2507000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1947000" />
+    <option name="totallyTimeSpent" value="2507000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="171" y="26" width="1400" height="867" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -315,11 +339,6 @@
         <state relative-caret-position="255">
           <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Container.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Containership.php">
@@ -352,11 +371,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ContainerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-          <folding>
-            <element signature="e#118#143#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Container.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/container/container.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="137" selection-start-line="2" selection-start-column="137" selection-end-line="2" selection-end-column="137" />
         </state>
       </provider>
     </entry>
