@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Entity\Product;
+use App\Service\ProductService;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,7 +48,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/new", name="productInsert")
      */
-    function insert(Request $request){
+    function insert(Request $request, ProductService $productService){
         $task = new Product();
 
 
@@ -69,7 +70,7 @@ class ProductController extends AbstractController
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $productService->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
 

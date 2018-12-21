@@ -8,11 +8,15 @@
 
 namespace App\Controller;
 use App\Entity\Container;
+use App\Entity\ContainerModel;
 use App\Entity\Containership;
 use App\Controller\ContainershipController;
 use App\Service\ContainerModelService;
 use App\Service\ContainerService;
 use App\Service\ContainershipService;
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,7 +39,7 @@ class ContainerController extends AbstractController
     }
 
     /**
-     * @Route("/container/{id}", name="containId")
+     * @Route("/container/{id<\d+>}", name="containId")
      */
     function displayId($id, ContainerService $containerService)
     {
@@ -48,17 +52,19 @@ class ContainerController extends AbstractController
 
 
     /**
-     * @Route("/container_insert", name="containInsert")
+     * @Route("/container/new", name="containInsert")
      */
-    function insert(ContainershipService $containershipService, ContainerModelService $containerModelService){
+    function insert(Request $request, ContainerService $containerService){
         $task = new Container();
 
         $form = $this->createFormBuilder($task)
             ->add('color', TextType::class)
-            ->add('containerShip', IntegerType::class)
-            ->add('containerModel', IntegerType::class)
+            ->add('containerShip', EntityType::class, array('class' => Containership::class, 'choice_label' => 'name'))
+            ->add('containerModel', EntityType::class, array('class' => ContainerModel::class, 'choice_label' => 'name'))
             ->add('save', SubmitType::class, array('label' => 'Create Container'))
             ->getForm();
+
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
@@ -67,11 +73,10 @@ class ContainerController extends AbstractController
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
+            $containerService->insert($task);
 
-            return $this->redirectToRoute('containshipInsert');
+
+            return $this->redirectToRoute('containInsert');
         }
 
         return $this->render('container/containerinsert.html.twig', array(

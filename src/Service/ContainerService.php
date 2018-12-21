@@ -38,7 +38,8 @@ private $entityManager;
         return $container;
     }
 
-    function getManager(){
-        return $this->entityManager;
+    function insert($container){
+        $this->entityManager->persist($container);
+        $this->entityManager->flush();
     }
 }
