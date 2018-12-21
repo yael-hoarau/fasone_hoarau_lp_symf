@@ -25,4 +25,17 @@ class ContainerController extends AbstractController
             'containers' => $containers
         ]);
     }
+
+    /**
+     * @Route("/container/{id}", name="containId")
+     */
+    function displayId($id){
+        $container = $this->getDoctrine()
+            ->getRepository(Container::class)
+            ->find($id);
+
+        return $this->render('container/containerid.html.twig',[
+            'container' => $container
+        ]);
+    }
 }
