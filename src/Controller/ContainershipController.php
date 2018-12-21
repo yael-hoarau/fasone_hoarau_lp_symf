@@ -32,7 +32,7 @@ class ContainershipController extends AbstractController
     }
 
     /**
-     * @Route("/containership/{id}", name="containshipId")
+     * @Route("/containership/{id<\d+>}", name="containshipId")
      */
     function displayId($id)
     {
@@ -46,7 +46,7 @@ class ContainershipController extends AbstractController
     }
 
     /**
-     * @Route("/containership_insert", name="containshipInsert")
+     * @Route("/containership/new", name="containshipInsert")
      */
     function insert(Request $request, ContainershipService $containershipService){
         $task = new Containership();
