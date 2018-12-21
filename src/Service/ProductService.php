@@ -38,4 +38,8 @@ class ProductService
 
         return $container;
     }
+
+    function getManager(){
+        return $this->entityManager;
+    }
 }

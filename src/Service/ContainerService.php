@@ -37,4 +37,8 @@ private $entityManager;
 
         return $container;
     }
+
+    function getManager(){
+        return $this->entityManager;
+    }
 }

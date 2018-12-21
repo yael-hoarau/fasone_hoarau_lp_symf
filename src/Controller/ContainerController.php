@@ -10,7 +10,9 @@ namespace App\Controller;
 use App\Entity\Container;
 use App\Entity\Containership;
 use App\Controller\ContainershipController;
+use App\Service\ContainerModelService;
 use App\Service\ContainerService;
+use App\Service\ContainershipService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -48,31 +50,29 @@ class ContainerController extends AbstractController
     /**
      * @Route("/container_insert", name="containInsert")
      */
-    function insert(){
+    function insert(ContainershipService $containershipService, ContainerModelService $containerModelService){
         $task = new Container();
-
-        $containerShips = $this->getDoctrine()->getRepository(Containership::class)->findAll();
 
         $form = $this->createFormBuilder($task)
             ->add('color', TextType::class)
-            ->add('containerShip', ChoiceType::class, array('choices' => $containerShips))
+            ->add('containerShip', IntegerType::class)
             ->add('containerModel', IntegerType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Container'))
             ->getForm();
 
-//
-        //$entityManager = $this->getDoctrine()->getManager();
-//
-        //$product = new Product();
-        //$product->setName('Keyboard');
-        //$product->setPrice(1999);
-        //$product->setDescription('Ergonomic and stylish!');
-//
-        //// tell Doctrine you want to (eventually) save the Product (no queries yet)
-        //$entityManager->persist($product);
-//
-        //// actually executes the queries (i.e. the INSERT query)
-        //$entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $task = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('containshipInsert');
+        }
 
         return $this->render('container/containerinsert.html.twig', array(
             'form' => $form->createView(),

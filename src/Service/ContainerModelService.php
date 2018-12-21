@@ -39,4 +39,8 @@ class ContainerModelService
 
         return $container;
     }
+
+    function getManager(){
+        return $this->entityManager;
+    }
 }

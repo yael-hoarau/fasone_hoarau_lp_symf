@@ -38,4 +38,8 @@ class ContainershipService
 
         return $container;
     }
+
+    function getManager(){
+        return $this->entityManager;
+    }
 }

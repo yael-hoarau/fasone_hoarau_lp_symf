@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Entity\Containership;
+use App\Service\ContainershipService;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,7 +48,7 @@ class ContainershipController extends AbstractController
     /**
      * @Route("/containership_insert", name="containshipInsert")
      */
-    function insert(Request $request){
+    function insert(Request $request, ContainershipService $containershipService){
         $task = new Containership();
 
 
@@ -68,7 +69,7 @@ class ContainershipController extends AbstractController
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $containershipService->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
 
