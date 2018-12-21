@@ -10,6 +10,9 @@ namespace App\Controller;
 use App\Entity\Container;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ContainerController extends AbstractController
 {
@@ -41,21 +44,35 @@ class ContainerController extends AbstractController
     }
 
     /**
-     * @Route("/container/insert", name="contain")
+     * @Route("/container_insert", name="containInsert")
      */
     function insert(){
-        $entityManager = $this->getDoctrine()->getManager();
+        $task = new Container();
+        $task->setColor('ROUGE');
 
-        $product = new Product();
-        $product->setName('Keyboard');
-        $product->setPrice(1999);
-        $product->setDescription('Ergonomic and stylish!');
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($product);
+        $form = $this->createFormBuilder($task)
+            ->add('containerName', TextType::class)
+            ->add('containerShip', \App\Entity\Containership::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Container'))
+            ->getForm();
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+//
+        //$entityManager = $this->getDoctrine()->getManager();
+//
+        //$product = new Product();
+        //$product->setName('Keyboard');
+        //$product->setPrice(1999);
+        //$product->setDescription('Ergonomic and stylish!');
+//
+        //// tell Doctrine you want to (eventually) save the Product (no queries yet)
+        //$entityManager->persist($product);
+//
+        //// actually executes the queries (i.e. the INSERT query)
+        //$entityManager->flush();
 
+        return $this->render('container/containerinsert.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
