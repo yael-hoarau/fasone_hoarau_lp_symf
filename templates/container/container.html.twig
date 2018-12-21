@@ -1,0 +1,4 @@
+<h1>Voici tous les containers :</h1>
+{% for container in containers %}
+    <p>Le containeur d'id {{ container.id }} de couleur {{ container.color }} qui a l'id du model {{ container.containermodel.id }} et l'id du containership {{ container.containership.id }}</p>
+{% endfor %}

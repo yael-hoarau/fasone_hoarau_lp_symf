@@ -21,7 +21,7 @@ class ContainerController extends AbstractController
             ->getRepository(Container::class)
             ->findAll();
 
-        return $this->render('pilote/pilote.html.twig',[
+        return $this->render('container/container.html.twig',[
             'containers' => $containers
         ]);
     }

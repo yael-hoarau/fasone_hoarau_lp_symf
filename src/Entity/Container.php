@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\ContainerModel;
+use App\Entity\Containership;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
