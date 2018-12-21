@@ -1,0 +1,4 @@
+<h1>Voici tous les products :</h1>
+{% for product in products %}
+    <p>Le product d'id {{ product.id }} et de nom {{ product.name }} a les dimensions suivantes. Longueur : {{ product.length }} / Largeur : {{ product.width }} / Hauteur : {{ product.height }} </p>
+{% endfor %}

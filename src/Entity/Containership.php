@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Containership
+ * ContainershipController
  *
  * @ORM\Table(name="CONTAINERSHIP")
  * @ORM\Entity
