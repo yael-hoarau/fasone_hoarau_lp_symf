@@ -25,4 +25,22 @@ class ContainerController extends AbstractController
             'containers' => $containers
         ]);
     }
+
+    /**
+     * @Route("/container/insert", name="contain")
+     */
+    function insert(){
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $product = new Product();
+        $product->setName('Keyboard');
+        $product->setPrice(1999);
+        $product->setDescription('Ergonomic and stylish!');
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($product);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+    }
 }
