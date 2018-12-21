@@ -8,11 +8,14 @@
 
 namespace App\Controller;
 use App\Entity\Container;
+use App\Entity\Containership;
+use App\Controller\ContainershipController;
 use App\Service\ContainerService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ContainerController extends AbstractController
@@ -47,12 +50,13 @@ class ContainerController extends AbstractController
      */
     function insert(){
         $task = new Container();
-        $task->setColor('ROUGE');
 
+        $containerShips = $this->getDoctrine()->getRepository(Containership::class)->findAll();
 
         $form = $this->createFormBuilder($task)
-            ->add('containerName', TextType::class)
-            ->add('containerShip', \App\Entity\Containership::class)
+            ->add('color', TextType::class)
+            ->add('containerShip', ChoiceType::class, array('choices' => $containerShips))
+            ->add('containerModel', IntegerType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Container'))
             ->getForm();
 
