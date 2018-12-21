@@ -69,9 +69,7 @@ class ContainershipController extends AbstractController
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $containershipService->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
+            $containershipService->insert($task);
 
             return $this->redirectToRoute('containshipInsert');
         }
