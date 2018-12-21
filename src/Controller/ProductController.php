@@ -70,9 +70,8 @@ class ProductController extends AbstractController
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $productService->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
+
+            $productService->insert($task);
 
             return $this->redirectToRoute('productInsert');
         }

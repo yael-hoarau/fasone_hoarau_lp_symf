@@ -42,4 +42,9 @@ class ProductService
     function getManager(){
         return $this->entityManager;
     }
+
+    function insert(Product $task){
+        $this->entityManager->persist($task);
+        $this->entityManager->flush();
+    }
 }
